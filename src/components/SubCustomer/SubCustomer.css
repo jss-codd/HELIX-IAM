@@ -1,0 +1,24 @@
+.main_div{
+    padding: 20px;
+}
+
+.detail_box{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+.detail_content {
+    margin-left: 40px;
+    color:darkslategrey;
+}
+.action_div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.listItem {
+    list-style: none;
+    cursor: pointer;
+    display: block;
+  }

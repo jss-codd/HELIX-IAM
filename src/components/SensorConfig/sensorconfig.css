@@ -1,0 +1,37 @@
+.formbox_div {
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 10px 20px;
+}
+.button_div {
+    display: flex;
+    justify-content: space-between;
+}
+.label_div {   
+    display: flex;
+    justify-content: space-between;
+   
+}
+.default-option{
+    color: #73777a;
+}
+.submit_div {
+    padding: 20px;
+}
+.formbox_div {
+    margin-bottom: 20px;
+}
+.Add_button {
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.mr20 ,.unit_div{
+    margin-left: 20px;
+}
+.start_div {
+    display: flex;
+}

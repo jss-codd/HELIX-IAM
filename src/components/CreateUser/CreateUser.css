@@ -1,0 +1,18 @@
+.user_main_container {
+   padding: 20px;
+}
+.submit_button{
+    background-color: #e74c3c;
+border: none;
+margin-top: 20px;
+}
+.checkbox_div{
+    width:30%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+.fileINput-div {
+    
+}
