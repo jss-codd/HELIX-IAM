@@ -1,0 +1,81 @@
+.toggleButton {
+    margin-top: 7px;
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 45px;
+    height: 21px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+  }
+  
+  .toggleButton:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: #ffffff;
+    border-radius: 90px;
+    transition: 0.3s;
+  }
+
+  input:checked+.toggleButton {
+    background: #000000;
+  }
+  
+  input:checked+.toggleButton:after {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+  }
+  
+  .toggleButton:active:after {
+    width: 18px;
+  }
+  .input-legend {
+    width: 100%;
+    height: 37px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 7px;
+    box-shadow: rgb(0 0 0 / 50%) 0px 3px 7px 0px;
+    background-color: #ffffff;
+    color: #898383;
+    padding: 2px;
+    border: 1px solid #898383;
+    padding: 15px 8px;
+  
+  }
+
+  /* input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    display: none;
+  } */
+  .application-actions{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  .application-logo{
+  height: 100px;
+  width: 100px
+  }
+  .hide-logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .application-active-checkbox{
+    margin-top: 10px;
+  }
+  .application-Check{
+  margin-left: 10px;
+  }
+  .form-error{
+    color : #ff0000 ; 
+    margin-top: 5px; 
+    font-size: small;
+  }

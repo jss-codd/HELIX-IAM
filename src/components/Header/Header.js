@@ -11,27 +11,62 @@ import userimg from "../../assests/user.png";
 import { KeycloackContext } from "../Keycloack/KeycloackContext";
 import './Header.css';
 import configimg from '../../assests/config.jpg'
-
+import application from '../../assests/application.png'
+import axios from 'axios'
 
 const Header = (props) => {
-    const { keycloackValue,logout,userInfo} = useContext(KeycloackContext)
+    const { keycloackValue, logout, userInfo } = useContext(KeycloackContext)
     const navigate = useNavigate();
     const [loginUserRole, setLoginUserRole] = useState("");
+    const [logo, setLogo] = useState("");
 
-    useEffect(()=>{
+    useEffect(() => {
         loginUser()
     })
 
-    const loginUser = async ()=>{
+    const loginUser = async () => {
         const resGroup = await keycloakApi.get(`/users/${keycloackValue?.subject}/groups`)
         setLoginUserRole(resGroup.data[0].name)
+        const logo = await getCustomerLogo(resGroup.data[0].name);
+        setLogo(logo);
+    }
+
+    const getCustomerLogo = async (Role) => {
+        if (Role === "Admin") {
+            return logoImg
+        }
+        else if (Role === "Customer") {
+            return userInfo?.logo
+        }
+        else {
+            if (userInfo?.logo !== undefined) {
+                const accessToken = localStorage.getItem("accessToken");
+                let imData = await axios.get(`${process.env.REACT_APP_HELIX_SERVER_URL}/user/getCustomerLogo/${userInfo?.logo}?type=logo`, {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+
+                    },
+                })
+                console.log("---------yyyyyyy-imData-----", imData);
+                if (imData?.data !== undefined) {
+                    return imData?.data
+                }
+                else {
+                    return logoImg
+                }
+            }
+            else {
+                console.log("this is the else calling ")
+                return logoImg
+            }
+        }
     }
 
     return (
         <div>
             <div className="heading_div">
                 <div>
-                    <img src={ userInfo?.logo?userInfo?.logo: logoImg} alt="logo" className="logoimg " />
+                    <img src={logo ? logo : logoImg} alt="logo" className="logoimg " />
                 </div>
                 <div className="logout_main">
                     <div className="name-logout">
@@ -60,7 +95,9 @@ const Header = (props) => {
                 {loginUserRole === "Admin" && (<div className="img-style" onClick={() => { navigate(`/view-configdata`) }}  >
                     <img src={configimg} title="configuration" alt="logo" className="user " />
                 </div>)}
-                
+                {loginUserRole === "Admin" && (<div className="img-style" onClick={() => { navigate(`/application`) }}  >
+                    <img src={application} title="application" alt="logo" className="user " />
+                </div>)}
             </div>
             <div style={{border:"10px soild green",width:"100%"}} >
               {props.children}

@@ -10,10 +10,12 @@ import Header from './components/Header/Header';
 import SensorConfig from './components/SensorConfig/SensorConfig';
 import ViewConfigData from './components/SensorConfig/ViewConfigData';
 import UpdateConfigData from './components/SensorConfig/UpdateConfigData';
+import ViewApplcationData from './components/application/viewApplications';
+import AddApplication from './components/application/addApplication';
 
 function App() {
   const { keycloackValue, authenticated } = useContext(KeycloackContext)
- 
+
   return (
 
     (keycloackValue && authenticated) && (
@@ -29,7 +31,9 @@ function App() {
               <Route path='/subcustomer/:id' element={<SubCustomer />} />
               <Route path='/view-configdata' element={<ViewConfigData />} />
               <Route path='/update-configdata/:id' element={<UpdateConfigData />} />
-
+              <Route path='/application' element={<ViewApplcationData />} />
+              <Route path='/application/add' element={<AddApplication />} />
+              {/* <Route path='/application/update' element={<AddApplication />} /> */}
             </Routes>
           </Header>
         </div>
